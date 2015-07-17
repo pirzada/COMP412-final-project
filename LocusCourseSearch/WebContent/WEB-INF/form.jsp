@@ -24,7 +24,7 @@
 		<h1>
 			<a href="https://locus.luc.edu">Locus</a>
 		</h1>
-		<form id="form_1030519" class="appnitro" method="post" action="">
+		<form id="form_1030519" class="appnitro" method="post" action="result.jsp">
 			<div class="form_description">
 				<h2>
 					Loyola Class
