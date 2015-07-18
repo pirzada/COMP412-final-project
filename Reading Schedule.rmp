@@ -26,39 +26,39 @@
         <parameter key="time_zone" value="SYSTEM"/>
         <parameter key="locale" value="English (United States)"/>
         <list key="data_set_meta_data_information">
-          <parameter key="0" value="CLASS.true.text.id"/>
-          <parameter key="1" value="CLASS_NBR.false.integer.attribute"/>
-          <parameter key="2" value="NAME.false.polynominal.attribute"/>
-          <parameter key="3" value="FACILITY_ID.false.polynominal.attribute"/>
+          <parameter key="0" value="CLASS.true.polynominal.id"/>
+          <parameter key="1" value="CLASS_NBR.true.integer.attribute"/>
+          <parameter key="2" value="NAME.true.polynominal.attribute"/>
+          <parameter key="3" value="FACILITY_ID.true.polynominal.attribute"/>
           <parameter key="4" value="START_TM.true.time.attribute"/>
-          <parameter key="5" value="END_TM.false.time.attribute"/>
-          <parameter key="6" value="CRSE_ID.false.integer.attribute"/>
-          <parameter key="7" value="CLASS_SECTION.false.polynominal.attribute"/>
-          <parameter key="8" value="INSTITUTION.false.polynominal.attribute"/>
-          <parameter key="9" value="ACAD_GROUP.false.polynominal.attribute"/>
-          <parameter key="10" value="SUBJECT.false.polynominal.attribute"/>
-          <parameter key="11" value="CATALOG_NBR.false.polynominal.attribute"/>
-          <parameter key="12" value="ACAD_CAREER.false.polynominal.attribute"/>
-          <parameter key="13" value="DESCR.false.polynominal.attribute"/>
-          <parameter key="14" value="ENRL_STAT.false.polynominal.attribute"/>
-          <parameter key="15" value="ENRL_CAP.false.integer.attribute"/>
-          <parameter key="16" value="ENRL_TOT.false.integer.attribute"/>
-          <parameter key="17" value="WAIT_TOT.false.integer.attribute"/>
-          <parameter key="18" value="ACAD_ORG.false.polynominal.attribute"/>
-          <parameter key="19" value="CAMPUS.false.polynominal.attribute"/>
-          <parameter key="20" value="LMS_GROUP_ID.false.polynominal.attribute"/>
-          <parameter key="21" value="MON.false.polynominal.attribute"/>
-          <parameter key="22" value="TUES.false.polynominal.attribute"/>
-          <parameter key="23" value="WED.false.polynominal.attribute"/>
-          <parameter key="24" value="THURS.false.polynominal.attribute"/>
-          <parameter key="25" value="FRI.false.polynominal.attribute"/>
-          <parameter key="26" value="SAT.false.polynominal.attribute"/>
-          <parameter key="27" value="SUN.false.polynominal.attribute"/>
-          <parameter key="28" value="START_DT.false.date_time.attribute"/>
-          <parameter key="29" value="END_DT.false.date_time.attribute"/>
-          <parameter key="30" value="STND_MTG_PAT.false.polynominal.attribute"/>
-          <parameter key="31" value="SESSION_CODE.false.polynominal.attribute"/>
-          <parameter key="32" value="EMPLID.false.integer.attribute"/>
+          <parameter key="5" value="END_TM.true.time.attribute"/>
+          <parameter key="6" value="CRSE_ID.true.integer.attribute"/>
+          <parameter key="7" value="CLASS_SECTION.true.polynominal.attribute"/>
+          <parameter key="8" value="INSTITUTION.true.text.attribute"/>
+          <parameter key="9" value="ACAD_GROUP.true.text.attribute"/>
+          <parameter key="10" value="SUBJECT.true.text.attribute"/>
+          <parameter key="11" value="CATALOG_NBR.true.polynominal.attribute"/>
+          <parameter key="12" value="ACAD_CAREER.true.polynominal.attribute"/>
+          <parameter key="13" value="DESCR.true.polynominal.attribute"/>
+          <parameter key="14" value="ENRL_STAT.true.polynominal.attribute"/>
+          <parameter key="15" value="ENRL_CAP.true.integer.attribute"/>
+          <parameter key="16" value="ENRL_TOT.true.integer.attribute"/>
+          <parameter key="17" value="WAIT_TOT.true.integer.attribute"/>
+          <parameter key="18" value="ACAD_ORG.true.polynominal.attribute"/>
+          <parameter key="19" value="CAMPUS.true.polynominal.attribute"/>
+          <parameter key="20" value="LMS_GROUP_ID.true.polynominal.attribute"/>
+          <parameter key="21" value="MON.true.polynominal.attribute"/>
+          <parameter key="22" value="TUES.true.polynominal.attribute"/>
+          <parameter key="23" value="WED.true.polynominal.attribute"/>
+          <parameter key="24" value="THURS.true.polynominal.attribute"/>
+          <parameter key="25" value="FRI.true.polynominal.attribute"/>
+          <parameter key="26" value="SAT.true.polynominal.attribute"/>
+          <parameter key="27" value="SUN.true.polynominal.attribute"/>
+          <parameter key="28" value="START_DT.true.date_time.attribute"/>
+          <parameter key="29" value="END_DT.true.date_time.attribute"/>
+          <parameter key="30" value="STND_MTG_PAT.true.polynominal.attribute"/>
+          <parameter key="31" value="SESSION_CODE.true.polynominal.attribute"/>
+          <parameter key="32" value="EMPLID.true.integer.attribute"/>
         </list>
         <parameter key="read_not_matching_values_as_missings" value="true"/>
         <parameter key="datamanagement" value="double_array"/>
@@ -83,10 +83,10 @@
         <parameter key="min" value="0.0"/>
         <parameter key="max" value="1.0"/>
       </operator>
-      <operator activated="true" class="select_attributes" compatibility="6.4.000" expanded="true" height="76" name="Select Attributes (3)" width="90" x="380" y="435">
+      <operator activated="true" class="select_attributes" compatibility="6.4.000" expanded="true" height="76" name="Select Attributes (3)" width="90" x="313" y="435">
         <parameter key="attribute_filter_type" value="subset"/>
         <parameter key="attribute" value="START_TM"/>
-        <parameter key="attributes" value="CLASS|START_TM|"/>
+        <parameter key="attributes" value="CLASS|START_TM|END_TM"/>
         <parameter key="use_except_expression" value="false"/>
         <parameter key="value_type" value="attribute_value"/>
         <parameter key="use_value_type_exception" value="false"/>
@@ -114,7 +114,7 @@
         <parameter key="replace_what" value="cluster"/>
         <parameter key="replace_by" value="Adventure"/>
       </operator>
-      <operator activated="false" class="join" compatibility="6.4.000" expanded="true" height="76" name="Join" width="90" x="514" y="210">
+      <operator activated="false" class="join" compatibility="6.4.000" expanded="true" height="76" name="Join" width="90" x="581" y="165">
         <parameter key="remove_double_attributes" value="true"/>
         <parameter key="join_type" value="inner"/>
         <parameter key="use_id_attribute_as_key" value="true"/>
@@ -159,7 +159,7 @@
         <parameter key="add_cluster_attribute" value="true"/>
         <parameter key="add_as_label" value="true"/>
         <parameter key="remove_unlabeled" value="false"/>
-        <parameter key="k" value="5"/>
+        <parameter key="k" value="14"/>
         <parameter key="max_runs" value="10"/>
         <parameter key="determine_good_start_values" value="false"/>
         <parameter key="measure_types" value="MixedMeasures"/>
