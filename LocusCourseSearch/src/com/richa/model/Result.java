@@ -1,5 +1,8 @@
 package com.richa.model;
 
+/**
+ * @author Richa
+ */
 public class Result {
 
 	int classNbr;
