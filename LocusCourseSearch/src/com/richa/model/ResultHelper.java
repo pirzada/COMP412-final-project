@@ -3,7 +3,12 @@ package com.richa.model;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.Collections;
 
 
 public class ResultHelper {
@@ -12,18 +17,15 @@ public class ResultHelper {
 	private static final String COMMA_DELIMITER = ",";
 
 	/**
-	 * Reads the health clinic file and store the data into a list
 	 * 
 	 * @param fileName
-	 * @param Clinics
+	 * @param results
 	 */
 	public static void readClinicCsvFile(String fileName, List<Result> results) {
 
 		BufferedReader fileReader = null;
 		try {
 
-			// Create a new list of clinics to be filled by CSV file data
-			// List<HealthClinic> Clinics = new ArrayList<HealthClinic>();
 
 			String line = "";
 
@@ -38,7 +40,7 @@ public class ResultHelper {
 				// Get all tokens available in line
 				String[] data = line.split(COMMA_DELIMITER);
 				if (data.length > 0) {
-					// Create a new Clinic object and fill data
+					// Create a new Result object and fill data
 					Result result = new Result(Integer.parseInt(data[0]), data[1], data[2], data[3], data[4],
 							Integer.parseInt(data[5]), data[6], data[7], data[8], data[9], data[10], data[11], data[12],
 							(data[13].charAt(0)), Integer.parseInt(data[14]), Integer.parseInt(data[15]),
@@ -62,6 +64,74 @@ public class ResultHelper {
 			}
 		}
 
+	}
+	
+	/**
+	 * 
+	 * @param completeResult
+	 * @param searchCriteria
+	 * @return
+	 */
+	public static List<Result> filterBySearch(List<Result> completeResult, Map<String,String> searchCriteria){
+		
+		List<Result> searchedResult = new ArrayList<Result>();
+		
+		for(Result r :completeResult){
+			if(searchCriteria.get("").equals(r.getAcadCareer()) && searchCriteria.get("").equals(r.getSubject()) ){
+				searchedResult.add(r);
+			}
+		}
+		
+		
+		return searchedResult;
+		
+	}
+	
+	/**
+	 * 
+	 * @param result
+	 * @return
+	 */
+	public static List<FinalResults> filterByCluster(List<Result> result){
+		List<FinalResults> fResult = new ArrayList<FinalResults>();
+		FinalResults res ;
+		
+		List<FinalResults> clusteredResults = new ArrayList<FinalResults>();
+		
+		
+		for(Result r :result){
+			res = new FinalResults();
+			res.setCluster(r.getLabel());
+			res.setCampus(r.getCampus());
+			res.setStartTime(r.getStartTime());
+			res.setEndTime(r.getEndTime());
+			fResult.add(res);
+		}
+		
+		Set<FinalResults> uniqueSet = new HashSet<FinalResults>(fResult);
+		
+		for (FinalResults temp : uniqueSet) {
+			temp.setNumberOfClasses(Collections.frequency(fResult, temp));
+			clusteredResults.add(temp);
+		}
+		
+		return clusteredResults;
+	}
+	
+	/**
+	 * 
+	 * @param value
+	 * @return
+	 */
+	public static List<FinalResults> search(Map<String, String> value){
+		String fileName =  "C:/Users/Richa/git/COMP412-final-project/LocusCourseSearch/clusterResults.csv";
+		List<Result> results = new ArrayList<Result>();
+		readClinicCsvFile(fileName, results);
+		
+		List<Result> filteredResult = filterBySearch(results, value);
+		
+		List<FinalResults> finalResults = filterByCluster(filteredResult);
+		return finalResults;
 	}
 
 }
