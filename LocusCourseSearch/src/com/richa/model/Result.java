@@ -11,7 +11,7 @@ public class Result {
 	String classSection;
 	String Institute;
 	String acadGroup;
-	String Subject;
+	String subject;
 	String catalogNbr;
 	String acadCareer;
 	String description;
@@ -36,6 +36,50 @@ public class Result {
 	long empId;
 	String label;
 	String className;
+
+	public Result(int classNbr, String name, String facilityId, String startTime, String endTime, int courseId,
+			String classSection, String Institute, String acadGroup, String Subject, String catalogNbr,
+			String acadCareer, String description, char enrlStatus, int enrlCapacity, int enrolTotal, int waitTotal,
+			int acadOrg, String campus, String lmsGpId, char isMon, char isTue, char isWed, char isThu, char isFri,
+			char isSat, char isSun, String startDate, String endDate, String stndMtgPat, int sessionCode, long empId,
+			String label, String className) {
+
+		this.classNbr = classNbr;
+		this.name = name;
+		this.facilityId = facilityId;
+		this.startTime = startTime;
+		this.endTime = endTime;
+		this.courseId = courseId;
+		this.classSection = classSection;
+		this.Institute = Institute;
+		this.acadGroup = acadGroup;
+		this.subject = Subject;
+		this.catalogNbr = catalogNbr;
+		this.acadCareer = acadCareer;
+		this.description = description;
+		this.enrlStatus = enrlStatus;
+		this.enrlCapacity = enrlCapacity;
+		this.enrolTotal = enrolTotal;
+		this.waitTotal = waitTotal;
+		this.acadOrg = acadOrg;
+		this.campus = campus;
+		this.lmsGpId = lmsGpId;
+		this.isMon = isMon;
+		this.isTue = isTue;
+		this.isWed = isWed;
+		this.isThu = isThu;
+		this.isFri = isFri;
+		this.isSat = isSat;
+		this.isSun = isSun;
+		this.startDate = startDate;
+		this.endDate = endDate;
+		this.stndMtgPat = stndMtgPat;
+		this.sessionCode = sessionCode;
+		this.empId = empId;
+		this.label = label;
+		this.className = className;
+
+	}
 
 	/**
 	 * @return the classNbr
@@ -176,7 +220,7 @@ public class Result {
 	 * @return the subject
 	 */
 	public String getSubject() {
-		return Subject;
+		return subject;
 	}
 
 	/**
@@ -184,7 +228,7 @@ public class Result {
 	 *            the subject to set
 	 */
 	public void setSubject(String subject) {
-		Subject = subject;
+		this.subject = subject;
 	}
 
 	/**
