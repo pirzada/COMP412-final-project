@@ -5,12 +5,12 @@ package com.richa.model;
  */
 public class Result {
 
-	int classNbr;
+	String classNbr;
 	String name;
 	String facilityId;
 	String startTime;
 	String endTime;
-	int courseId;
+	String courseId;
 	String classSection;
 	String Institute;
 	String acadGroup;
@@ -18,33 +18,33 @@ public class Result {
 	String catalogNbr;
 	String acadCareer;
 	String description;
-	char enrlStatus;
-	int enrlCapacity;
-	int enrolTotal;
-	int waitTotal;
-	int acadOrg;
+	String enrlStatus;
+	String enrlCapacity;
+	String enrolTotal;
+	String waitTotal;
+	String acadOrg;
 	String campus;
 	String lmsGpId;
-	char isMon;
-	char isTue;
-	char isWed;
-	char isThu;
-	char isFri;
-	char isSat;
-	char isSun;
+	String isMon;
+	String isTue;
+	String isWed;
+	String isThu;
+	String isFri;
+	String isSat;
+	String isSun;
 	String startDate;
 	String endDate;
 	String stndMtgPat;
-	int sessionCode;
-	long empId;
+	String sessionCode;
+	String empId;
 	String label;
 	String className;
 
-	public Result(int classNbr, String name, String facilityId, String startTime, String endTime, int courseId,
+	public Result(String classNbr, String name, String facilityId, String startTime, String endTime, String courseId,
 			String classSection, String Institute, String acadGroup, String Subject, String catalogNbr,
-			String acadCareer, String description, char enrlStatus, int enrlCapacity, int enrolTotal, int waitTotal,
-			int acadOrg, String campus, String lmsGpId, char isMon, char isTue, char isWed, char isThu, char isFri,
-			char isSat, char isSun, String startDate, String endDate, String stndMtgPat, int sessionCode, long empId,
+			String acadCareer, String description, String enrlStatus, String enrlCapacity, String enrolTotal, String waitTotal,
+			String acadOrg, String campus, String lmsGpId, String isMon, String isTue, String isWed, String isThu, String isFri,
+			String isSat, String isSun, String startDate, String endDate, String stndMtgPat, String sessionCode, String empId,
 			String label, String className) {
 
 		this.classNbr = classNbr;
@@ -87,7 +87,7 @@ public class Result {
 	/**
 	 * @return the classNbr
 	 */
-	public int getClassNbr() {
+	public String getClassNbr() {
 		return classNbr;
 	}
 
@@ -95,7 +95,7 @@ public class Result {
 	 * @param classNbr
 	 *            the classNbr to set
 	 */
-	public void setClassNbr(int classNbr) {
+	public void setClassNbr(String classNbr) {
 		this.classNbr = classNbr;
 	}
 
@@ -162,7 +162,7 @@ public class Result {
 	/**
 	 * @return the courseId
 	 */
-	public int getCourseId() {
+	public String getCourseId() {
 		return courseId;
 	}
 
@@ -170,7 +170,7 @@ public class Result {
 	 * @param courseId
 	 *            the courseId to set
 	 */
-	public void setCourseId(int courseId) {
+	public void setCourseId(String courseId) {
 		this.courseId = courseId;
 	}
 
@@ -282,7 +282,7 @@ public class Result {
 	/**
 	 * @return the enrlStatus
 	 */
-	public char getEnrlStatus() {
+	public String getEnrlStatus() {
 		return enrlStatus;
 	}
 
@@ -290,14 +290,14 @@ public class Result {
 	 * @param enrlStatus
 	 *            the enrlStatus to set
 	 */
-	public void setEnrlStatus(char enrlStatus) {
+	public void setEnrlStatus(String enrlStatus) {
 		this.enrlStatus = enrlStatus;
 	}
 
 	/**
 	 * @return the enrlCapacity
 	 */
-	public int getEnrlCapacity() {
+	public String getEnrlCapacity() {
 		return enrlCapacity;
 	}
 
@@ -305,14 +305,14 @@ public class Result {
 	 * @param enrlCapacity
 	 *            the enrlCapacity to set
 	 */
-	public void setEnrlCapacity(int enrlCapacity) {
+	public void setEnrlCapacity(String enrlCapacity) {
 		this.enrlCapacity = enrlCapacity;
 	}
 
 	/**
 	 * @return the enrolTotal
 	 */
-	public int getEnrolTotal() {
+	public String getEnrolTotal() {
 		return enrolTotal;
 	}
 
@@ -320,14 +320,14 @@ public class Result {
 	 * @param enrolTotal
 	 *            the enrolTotal to set
 	 */
-	public void setEnrolTotal(int enrolTotal) {
+	public void setEnrolTotal(String enrolTotal) {
 		this.enrolTotal = enrolTotal;
 	}
 
 	/**
 	 * @return the waitTotal
 	 */
-	public int getWaitTotal() {
+	public String getWaitTotal() {
 		return waitTotal;
 	}
 
@@ -335,14 +335,14 @@ public class Result {
 	 * @param waitTotal
 	 *            the waitTotal to set
 	 */
-	public void setWaitTotal(int waitTotal) {
+	public void setWaitTotal(String waitTotal) {
 		this.waitTotal = waitTotal;
 	}
 
 	/**
 	 * @return the acadOrg
 	 */
-	public int getAcadOrg() {
+	public String getAcadOrg() {
 		return acadOrg;
 	}
 
@@ -350,7 +350,7 @@ public class Result {
 	 * @param acadOrg
 	 *            the acadOrg to set
 	 */
-	public void setAcadOrg(int acadOrg) {
+	public void setAcadOrg(String acadOrg) {
 		this.acadOrg = acadOrg;
 	}
 
@@ -387,7 +387,7 @@ public class Result {
 	/**
 	 * @return the isMon
 	 */
-	public char getIsMon() {
+	public String getIsMon() {
 		return isMon;
 	}
 
@@ -395,14 +395,14 @@ public class Result {
 	 * @param isMon
 	 *            the isMon to set
 	 */
-	public void setIsMon(char isMon) {
+	public void setIsMon(String isMon) {
 		this.isMon = isMon;
 	}
 
 	/**
 	 * @return the isTue
 	 */
-	public char getIsTue() {
+	public String getIsTue() {
 		return isTue;
 	}
 
@@ -410,14 +410,14 @@ public class Result {
 	 * @param isTue
 	 *            the isTue to set
 	 */
-	public void setIsTue(char isTue) {
+	public void setIsTue(String isTue) {
 		this.isTue = isTue;
 	}
 
 	/**
 	 * @return the isWed
 	 */
-	public char getIsWed() {
+	public String getIsWed() {
 		return isWed;
 	}
 
@@ -425,14 +425,14 @@ public class Result {
 	 * @param isWed
 	 *            the isWed to set
 	 */
-	public void setIsWed(char isWed) {
+	public void setIsWed(String isWed) {
 		this.isWed = isWed;
 	}
 
 	/**
 	 * @return the isThu
 	 */
-	public char getIsThu() {
+	public String getIsThu() {
 		return isThu;
 	}
 
@@ -440,14 +440,14 @@ public class Result {
 	 * @param isThu
 	 *            the isThu to set
 	 */
-	public void setIsThu(char isThu) {
+	public void setIsThu(String isThu) {
 		this.isThu = isThu;
 	}
 
 	/**
 	 * @return the isFri
 	 */
-	public char getIsFri() {
+	public String getIsFri() {
 		return isFri;
 	}
 
@@ -455,14 +455,14 @@ public class Result {
 	 * @param isFri
 	 *            the isFri to set
 	 */
-	public void setIsFri(char isFri) {
+	public void setIsFri(String isFri) {
 		this.isFri = isFri;
 	}
 
 	/**
 	 * @return the isSat
 	 */
-	public char getIsSat() {
+	public String getIsSat() {
 		return isSat;
 	}
 
@@ -470,14 +470,14 @@ public class Result {
 	 * @param isSat
 	 *            the isSat to set
 	 */
-	public void setIsSat(char isSat) {
+	public void setIsSat(String isSat) {
 		this.isSat = isSat;
 	}
 
 	/**
 	 * @return the isSun
 	 */
-	public char getIsSun() {
+	public String getIsSun() {
 		return isSun;
 	}
 
@@ -485,7 +485,7 @@ public class Result {
 	 * @param isSun
 	 *            the isSun to set
 	 */
-	public void setIsSun(char isSun) {
+	public void setIsSun(String isSun) {
 		this.isSun = isSun;
 	}
 
@@ -537,7 +537,7 @@ public class Result {
 	/**
 	 * @return the sessionCode
 	 */
-	public int getSessionCode() {
+	public String getSessionCode() {
 		return sessionCode;
 	}
 
@@ -545,14 +545,14 @@ public class Result {
 	 * @param sessionCode
 	 *            the sessionCode to set
 	 */
-	public void setSessionCode(int sessionCode) {
+	public void setSessionCode(String sessionCode) {
 		this.sessionCode = sessionCode;
 	}
 
 	/**
 	 * @return the empId
 	 */
-	public long getEmpId() {
+	public String getEmpId() {
 		return empId;
 	}
 
@@ -560,7 +560,7 @@ public class Result {
 	 * @param empId
 	 *            the empId to set
 	 */
-	public void setEmpId(long empId) {
+	public void setEmpId(String empId) {
 		this.empId = empId;
 	}
 
