@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+    <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+    <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -19,14 +22,13 @@
 		<h1>
 			<a href="https://locus.luc.edu">Locus</a>
 		</h1>
-		<form id="form_1030519" class="appnitro" method="post" action="">
+		<form:form id="form_1030519" class="appnitro" method="post" action="fullResult.htm" modelAttribute="finallist">
 			<div class="form_description">
 				<h2>
 					Loyola Class
-					Result&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img
-						src="<%=request.getContextPath()%>/loyola_logo.png">
+					Result
 				</h2>
-				<p>Search your class according to schedule.</p>
+				<p>Expanded Result.</p>
 			</div>
 			<ul>
 
@@ -35,7 +37,7 @@
 				</tr>
 					<c:forEach items="${result}" var="finalResult">
 							<tr>
-								<td>${finalResult.getCluster()}</td>
+								<td><button type="submit" id ="cluster" name = "cluster" value = ${finalResult.getCluster()}>${finalResult.getCluster()}</button></td>
 								<td>${finalResult.getNumberOfClasses()}</td>
 								<td>${finalResult.getStartTime()}</td>
 								<td>${finalResult.getEndTime()}</td>
@@ -46,10 +48,11 @@
 				</li>
 
 				<li class="buttons"><input type="hidden" name="form_id"
-					value="1030519" /> <input id="saveForm" class="button_text"
-					type="submit" name="submit" value="Done" /></li>
+					value="1030519" />  <input 
+					type="hidden" name="department" value="${department}" /><input 
+					type="hidden" name="radio" value="${classType}" /></li>
 			</ul>
-		</form>
+		</form:form>
 	</div>
 	<img id="bottom" src="<%=request.getContextPath()%>/Resource/bottom.png" alt="">
 
