@@ -19,7 +19,7 @@ public class HelloWorldController{
 	 * 
 	 * @return
 	 */
-	@RequestMapping(value = "/search.html", method = RequestMethod.GET)
+	@RequestMapping(value = "/search", method = RequestMethod.GET)
 	public ModelAndView handleRequestInternal() {
  
 		ModelAndView model = new ModelAndView("form");
@@ -32,12 +32,11 @@ public class HelloWorldController{
 	 * 
 	 * @return
 	 */
-	@RequestMapping(value = "/result.html", method = RequestMethod.POST)
+	@RequestMapping(value = "/result", method = RequestMethod.POST)
 	public ModelAndView handleSearchRequestInternal(@RequestParam Map<String, String> values ) {
 		
 		List<FinalResults> results = ResultHelper.search(values);
 	
- 
 		ModelAndView model = new ModelAndView("result");
 		model.addObject("result", results);
  
