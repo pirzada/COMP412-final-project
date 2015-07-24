@@ -5,6 +5,7 @@ package com.richa.model;
  */
 public class Result {
 
+	//Values to map the rapid miner values
 	String classNbr;
 	String name;
 	String facilityId;
@@ -40,6 +41,7 @@ public class Result {
 	String label;
 	String className;
 
+	//Constructor to map the values
 	public Result(String classNbr, String name, String facilityId, String startTime, String endTime, String courseId,
 			String classSection, String Institute, String acadGroup, String Subject, String catalogNbr,
 			String acadCareer, String description, String enrlStatus, String enrlCapacity, String enrolTotal, String waitTotal,
