@@ -21,7 +21,7 @@ public class ResultHelper {
 	private static final String COMMA_DELIMITER = ",";
 
 	/**
-	 * 
+	 * Reads the rapid miner results and store in a list
 	 * @param fileName
 	 * @param results
 	 */
@@ -68,7 +68,7 @@ public class ResultHelper {
 	}
 
 	/**
-	 * 
+	 * Filter the result according to given inputs
 	 * @param completeResult
 	 * @param searchCriteria
 	 * @return
@@ -92,7 +92,7 @@ public class ResultHelper {
 	}
 
 	/**
-	 * 
+	 * Group the clustered result
 	 * @param result
 	 * @return
 	 */
@@ -146,7 +146,7 @@ public class ResultHelper {
 	}
 
 	/**
-	 * 
+	 * search the required classes
 	 * @param value
 	 * @return
 	 */
@@ -165,7 +165,7 @@ public class ResultHelper {
 	}
 
 	/**
-	 * 
+	 *return the expanded result
 	 * @param value
 	 * @return
 	 */
@@ -189,7 +189,7 @@ public class ResultHelper {
 	}
 
 	/**
-	 * 
+	 * Convert the string into date
 	 * @param dateTime
 	 * @return
 	 */
@@ -208,7 +208,7 @@ public class ResultHelper {
 	}
 
 	/**
-	 * 
+	 * trim the date to return time only
 	 * @param dateTime
 	 * @return
 	 */
