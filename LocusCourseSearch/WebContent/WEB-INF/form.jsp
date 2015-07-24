@@ -28,21 +28,20 @@
 			<div class="form_description">
 				<h2>
 					Loyola Class
-					Search&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img
-						src="<%=request.getContextPath()%>/loyola_logo.png">
+					Search
 				</h2>
 				<p>Search your class according to schedule.</p>
 			</div>
 			<ul>
 
-				<li id="li_3"><label class="description" for="element_3">Class Type </label> <span> 
+				<li id="li_3"><label class="description" for="element_3">Class Type* </label> <span> 
 				<input id="element_3_1" name="radio" class="element radio" type="radio" value="1" /> 
 				<label class="choice" for="element_3_1">Undergraduate</label> 
 				<input id="element_3_2" name="radio" class="element radio" type="radio" value="2" /> 
 				<label class="choice" for="element_3_2">Graduate</label>
 
 				</span></li>
-				<li id="li_4"><label class="description" for="element_4">Department
+				<li id="li_4"><label class="description" for="element_4">Department*
 				</label>
 					<div>
 						<select class="element select medium" id="element_4"
@@ -184,22 +183,6 @@
 							<option value="1">Fall 2015</option>
 							<!--<option value="2">Summer</option>
 							<option value="3">Spring</option>-->
-
-						</select>
-					</div></li>
-				<li id="li_6"><label class="description" for="element_6">Week
-						Day </label>
-					<div>
-						<select class="element select medium" id="element_6"
-							name="element_6">
-							<option value="" selected="selected"></option>
-							<option value="1">Monday</option>
-							<option value="2">Tuesday</option>
-							<option value="3">Wednesday</option>
-							<option value="4">Thursday</option>
-							<option value="5">Friday</option>
-							<option value="6">Saturday</option>
-							<option value="7">Sunday</option>
 
 						</select>
 					</div></li>
