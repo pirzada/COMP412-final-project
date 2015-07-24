@@ -28,7 +28,7 @@
 					Loyola Class
 					Result
 				</h2>
-				<p>Department : ${department} Level: "${radio}"</p>
+				<p>Expanded Result.</p>
 			</div>
 			<ul>
 

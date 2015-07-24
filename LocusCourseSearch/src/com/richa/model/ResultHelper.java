@@ -3,12 +3,17 @@ package com.richa.model;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.TimeZone;
 import java.util.Collections;
+import java.util.Date;
 
 public class ResultHelper {
 
@@ -20,7 +25,7 @@ public class ResultHelper {
 	 * @param fileName
 	 * @param results
 	 */
-	public static void readClinicCsvFile(String fileName, List<Result> results) {
+	public static void readCsvFile(String fileName, List<Result> results) {
 
 		BufferedReader fileReader = null;
 		try {
@@ -69,10 +74,6 @@ public class ResultHelper {
 	 * @return
 	 */
 	public static List<Result> filterBySearch(List<Result> completeResult, Map<String, String> searchCriteria) {
-
-		System.out.println(searchCriteria.get("department"));
-		System.out.println(searchCriteria.get("radio"));
-		System.out.println("size "+ completeResult.size());
 		List<Result> searchedResult = new ArrayList<Result>();
 		String classType = "0";
 		for (Result r : completeResult) {
@@ -81,7 +82,7 @@ public class ResultHelper {
 			} else if ("GRAD".equalsIgnoreCase(r.getAcadCareer())) {
 				classType = "2";
 			}
-			if ((searchCriteria.get("radio")).equalsIgnoreCase(classType)
+			if (classType.equalsIgnoreCase((searchCriteria.get("radio")))
 					&& (searchCriteria.get("department")).equalsIgnoreCase(r.getSubject())) {
 				searchedResult.add(r);
 			}
@@ -97,30 +98,48 @@ public class ResultHelper {
 	 * @return
 	 */
 	public static List<FinalResults> filterByCluster(List<Result> result) {
-		List<FinalResults> fResult = new ArrayList<FinalResults>();
-		FinalResults res;
 
 		List<FinalResults> clusteredResults = new ArrayList<FinalResults>();
-		
+
 		List<String> string = new ArrayList<String>();
 
 		for (Result r : result) {
-/*			res = new FinalResults();
-			res.setCluster(r.getLabel());
-		res.setCampus(r.getCampus());
-			res.setStartTime(r.getStartTime());
-			res.setEndTime(r.getEndTime());
-			fResult.add(res);*/
 			string.add(r.getLabel());
 		}
 
 		Set<String> uniqueSet = new HashSet<String>(string);
-		FinalResults f ;
+		FinalResults f;
 
 		for (String temp : uniqueSet) {
 			f = new FinalResults();
 			f.setNumberOfClasses(Collections.frequency(string, temp));
+			/*
+			 * DateFormat format1 = new SimpleDateFormat("HH:mm a");
+			 * format1.setTimeZone(TimeZone.getTimeZone("America/Chicago"));
+			 * Date sTime = getTime("12/12/12 12:00 PM"), eTime = getTime(
+			 * "12/12/99 12:00 AM");
+			 */
+			String campus = null;
+			String sTime = null;
+			String eTime = null;
+			for (Result r : result) {
+				if (r.getLabel().equals(temp)) {
+					/*
+					 * if (sTime.compareTo(getTime(r.getStartTime())) > 0) {
+					 * sTime = getTime(r.getStartTime()); } if
+					 * (eTime.compareTo(getTime(r.getEndTime())) < 0) { eTime =
+					 * getTime(r.getEndTime()); }
+					 */
+					sTime = getTimeOnly(r.getStartTime());
+					eTime = getTimeOnly(r.getEndTime());
+					campus = r.getCampus();
+				}
+			}
+
+			f.setStartTime(sTime);
+			f.setEndTime(eTime);
 			f.setCluster(temp);
+			f.setCampus(campus);
 			clusteredResults.add(f);
 		}
 
@@ -135,10 +154,69 @@ public class ResultHelper {
 	public static List<FinalResults> search(Map<String, String> value) {
 		String fileName = "C:/Users/Richa/git/COMP412-final-project/LocusCourseSearch/clusterResults.csv";
 		List<Result> results = new ArrayList<Result>();
-		readClinicCsvFile(fileName, results);
+		readCsvFile(fileName, results);
 		List<Result> filteredResult = filterBySearch(results, value);
 		List<FinalResults> finalResults = filterByCluster(filteredResult);
+		/*
+		 * Map<String, Object> fResult = new HashMap<String, Object>();
+		 * fResult.put("clusteredResult", finalResults);
+		 * fResult.put("filteredResult", filteredResult);
+		 */
 		return finalResults;
+	}
+
+	/**
+	 * 
+	 * @param fullList
+	 * @param cluster
+	 * @return
+	 */
+	public static List<Result> getExpandedResult(Map<String, String> value) {
+		String fileName = "C:/Users/Richa/git/COMP412-final-project/LocusCourseSearch/clusterResults.csv";
+		List<Result> results = new ArrayList<Result>();
+		readCsvFile(fileName, results);
+		List<Result> filteredResult = filterBySearch(results, value);
+
+		List<Result> result = new ArrayList<Result>();
+		String cluster = value.get("cluster");
+		for (Result r : filteredResult) {
+			if (r.getLabel().equalsIgnoreCase(cluster)) {
+				r.setStartTime(getTimeOnly(r.getStartTime()));
+				r.setEndTime(getTimeOnly(r.getEndTime()));
+				result.add(r);
+			}
+
+		}
+		return result;
+	}
+
+	/**
+	 * 
+	 * @param dateTime
+	 * @return
+	 */
+	public static Date getTime(String dateTime) {
+
+		DateFormat format = new SimpleDateFormat("mm/dd/yy HH:MM a");
+		format.setTimeZone(TimeZone.getTimeZone("America/Chicago"));
+		Date d = null;
+		try {
+			d = format.parse(dateTime);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return d;
+	}
+
+	/**
+	 * 
+	 * @param dateTime
+	 * @return
+	 */
+	public static String getTimeOnly(String dateTime) {
+		String time = dateTime.substring(9);
+		return time;
 	}
 
 }

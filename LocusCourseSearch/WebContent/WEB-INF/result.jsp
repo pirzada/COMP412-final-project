@@ -5,6 +5,23 @@
     <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
     <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%
+String department = request.getParameter("department");
+String classType = request.getParameter("radio");
+boolean first = false;
+String message = "";
+String warning = "The Result shows time range not the exact time. Please expand the result to see actual details";
+if (department == null || department == "") {
+
+        message = "Please select the Department";
+}
+
+if (classType == null || classType == "") {
+
+    message = "Please select the class type";
+}
+// -------------------------------------------------------
+%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -28,12 +45,17 @@
 					Loyola Class
 					Result
 				</h2>
-				<p>Expanded Result.</p>
+				<p>Department : ${department}</p><p> Level: "${classType}"</p>
 			</div>
 			<ul>
-
+				<%
+					if (message != "") {
+				%>
+				<%=message%>
+				<% } %>
+				<%=warning%>
 				<li class = "tables"><table border = "1">
-				<tr><th>Cluster Number</th><th>Number of CLasses</th><th>Start Time</th><th>End time</th><th>Campus</th>
+				<tr><th>Cluster Number</th><th>Number of CLasses</th><th>Start Time</th><th>End time</th><th>Probable Campus</th>
 				</tr>
 					<c:forEach items="${result}" var="finalResult">
 							<tr>
