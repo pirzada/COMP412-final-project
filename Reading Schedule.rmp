@@ -156,6 +156,21 @@
         <list key="key_attributes"/>
         <parameter key="keep_both_join_attributes" value="false"/>
       </operator>
+      <operator activated="true" class="remove_duplicates" compatibility="6.4.000" expanded="true" height="76" name="Remove Duplicates" width="90" x="715" y="120">
+        <parameter key="attribute_filter_type" value="subset"/>
+        <parameter key="attribute" value=""/>
+        <parameter key="attributes" value="CLASS_NBR|CLASS_SECTION|CRSE_ID|CLASS"/>
+        <parameter key="use_except_expression" value="false"/>
+        <parameter key="value_type" value="attribute_value"/>
+        <parameter key="use_value_type_exception" value="false"/>
+        <parameter key="except_value_type" value="time"/>
+        <parameter key="block_type" value="attribute_block"/>
+        <parameter key="use_block_type_exception" value="false"/>
+        <parameter key="except_block_type" value="value_matrix_row_start"/>
+        <parameter key="invert_selection" value="false"/>
+        <parameter key="include_special_attributes" value="false"/>
+        <parameter key="treat_missing_values_as_duplicates" value="false"/>
+      </operator>
       <operator activated="true" class="write_csv" compatibility="6.4.000" expanded="true" height="76" name="Write CSV" width="90" x="782" y="30">
         <parameter key="csv_file" value="/Users/Hattan/Desktop/COMP412 final pro/COMP412-final-project/cluster results.csv"/>
         <parameter key="column_separator" value=","/>
@@ -202,7 +217,8 @@
       <connect from_op="KMeans" from_port="cluster model" to_op="ClusterModel2ExampleSet" to_port="model"/>
       <connect from_op="KMeans" from_port="clustered set" to_op="ClusterModel2ExampleSet" to_port="unlabelled data"/>
       <connect from_op="ClusterModel2ExampleSet" from_port="labelled data" to_op="Join" to_port="right"/>
-      <connect from_op="Join" from_port="join" to_op="Write CSV" to_port="input"/>
+      <connect from_op="Join" from_port="join" to_op="Remove Duplicates" to_port="example set input"/>
+      <connect from_op="Remove Duplicates" from_port="example set output" to_op="Write CSV" to_port="input"/>
       <connect from_op="Write CSV" from_port="through" to_port="result 1"/>
       <connect from_op="Select Attributes" from_port="example set output" to_op="Select Attributes (2)" to_port="example set input"/>
       <portSpacing port="source_input 1" spacing="0"/>
