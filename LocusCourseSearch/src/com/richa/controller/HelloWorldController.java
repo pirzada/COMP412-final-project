@@ -53,7 +53,6 @@ public class HelloWorldController {
 	public ModelAndView handleExpandRequestInternal(@RequestParam Map<String, String> values) {
 
 		List<Result> results = ResultHelper.getExpandedResult(values);
-		System.out.println("size "+results.size());
 		ModelAndView model = new ModelAndView("fullResult");
 		model.addObject("result", results);
 

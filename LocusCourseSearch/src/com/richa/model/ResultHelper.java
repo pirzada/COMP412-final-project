@@ -87,7 +87,6 @@ public class ResultHelper {
 				searchedResult.add(r);
 			}
 		}
-		System.out.println(searchedResult.size());
 		return searchedResult;
 
 	}
