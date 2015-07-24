@@ -167,8 +167,7 @@ public class ResultHelper {
 
 	/**
 	 * 
-	 * @param fullList
-	 * @param cluster
+	 * @param value
 	 * @return
 	 */
 	public static List<Result> getExpandedResult(Map<String, String> value) {

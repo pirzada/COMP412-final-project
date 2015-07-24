@@ -587,8 +587,8 @@ public class Result {
 	}
 
 	/**
-	 * @param class1
-	 *            the class to set
+	 * @param className
+	 *           
 	 */
 	public void setClassName(String className) {
 		this.className = className;
