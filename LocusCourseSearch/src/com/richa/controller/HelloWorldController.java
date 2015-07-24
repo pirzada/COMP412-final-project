@@ -17,7 +17,7 @@ import com.richa.model.ResultHelper;
 public class HelloWorldController {
 
 	/**
-	 * 
+	 * Method to display search page
 	 * @return
 	 */
 	@RequestMapping(value = "/search", method = RequestMethod.GET)
@@ -29,7 +29,7 @@ public class HelloWorldController {
 	}
 
 	/**
-	 * 
+	 * Method to display clustered result page
 	 * @return
 	 */
 	@RequestMapping(value = "/result", method = RequestMethod.POST)
@@ -46,7 +46,7 @@ public class HelloWorldController {
 	}
 
 	/**
-	 * 
+	 * Method to display expanded result page
 	 * @return
 	 */
 	@RequestMapping(value = "/fullResult", method = RequestMethod.POST)
