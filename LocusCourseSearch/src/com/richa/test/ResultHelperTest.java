@@ -5,7 +5,20 @@ package com.richa.test;
 
 import static org.junit.Assert.*;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.junit.Test;
+
+import com.richa.model.FinalResults;
+import com.richa.model.Result;
+import com.richa.model.ResultHelper;
 
 /**
  * @author Richa
@@ -14,11 +27,25 @@ import org.junit.Test;
 public class ResultHelperTest {
 
 	/**
-	 * Test method for {@link com.richa.model.ResultHelper#readClinicCsvFile(java.lang.String, java.util.List)}.
+	 * Test method for {@link com.richa.model.ResultHelper#readCsvFile(java.lang.String, java.util.List)}.
 	 */
 	@Test
 	public final void testReadClinicCsvFile() {
-		fail("Not yet implemented"); // TODO
+		List<Result> result = new ArrayList<Result>();
+		ResultHelper.readCsvFile(
+				"C:/Users/Richa/git/COMP412-final-project/LocusCourseSearch/src/com/richa/test/clusterResults.csv", result);
+		assertEquals(14163, result.size());
+	}
+	
+	/**
+	 * Test method for {@link com.richa.model.ResultHelper#readCsvFile(java.lang.String, java.util.List)}.
+	 */
+	@Test
+	public void readCsvFileEmptyTest() {
+		List<Result> result = new ArrayList<Result>();
+		ResultHelper.readCsvFile(
+				"C:/Users/Richa/git/COMP412-final-project/LocusCourseSearch/src/com/richa/test/clusterResultsEmpty.csv", result);
+		assertEquals(0, result.size());
 	}
 
 	/**
@@ -26,7 +53,14 @@ public class ResultHelperTest {
 	 */
 	@Test
 	public final void testFilterBySearch() {
-		fail("Not yet implemented"); // TODO
+		String fileName = "C:/Users/Richa/git/COMP412-final-project/LocusCourseSearch/src/com/richa/test/clusterResults1Row.csv";
+		List<Result> results = new ArrayList<Result>();
+		ResultHelper.readCsvFile(fileName, results);
+		Map<String, String> value = new HashMap<String, String>();
+		value.put("department", "ACCT");
+		value.put("radio", "1");
+		List<Result> filteredResult = ResultHelper.filterBySearch(results, value);
+		assertEquals(1, filteredResult.size());
 	}
 
 	/**
@@ -34,15 +68,15 @@ public class ResultHelperTest {
 	 */
 	@Test
 	public final void testFilterByCluster() {
-		fail("Not yet implemented"); // TODO
-	}
-
-	/**
-	 * Test method for {@link com.richa.model.ResultHelper#search(java.util.Map)}.
-	 */
-	@Test
-	public final void testSearch() {
-		fail("Not yet implemented"); // TODO
+		String fileName = "C:/Users/Richa/git/COMP412-final-project/LocusCourseSearch/src/com/richa/test/clusterResults1Row.csv";
+		List<Result> results = new ArrayList<Result>();
+		ResultHelper.readCsvFile(fileName, results);
+		Map<String, String> value = new HashMap<String, String>();
+		value.put("department", "ACCT");
+		value.put("radio", "1");
+		List<Result> filteredResult = ResultHelper.filterBySearch(results, value);
+		List<FinalResults> finalResults = ResultHelper.filterByCluster(filteredResult);
+		assertEquals(1, finalResults.size());
 	}
 
 	/**
@@ -50,15 +84,12 @@ public class ResultHelperTest {
 	 */
 	@Test
 	public final void testGetExpandedResult() {
-		fail("Not yet implemented"); // TODO
-	}
-
-	/**
-	 * Test method for {@link com.richa.model.ResultHelper#getTime(java.lang.String)}.
-	 */
-	@Test
-	public final void testGetTime() {
-		fail("Not yet implemented"); // TODO
+		Map<String, String> value = new HashMap<String, String>();
+		value.put("department", "ACCT");
+		value.put("radio", "1");
+		value.put("cluster","cluster_4");
+		List<Result> expandedList = ResultHelper.getExpandedResult(value);
+		assertEquals(4, expandedList.size());
 	}
 
 	/**
@@ -66,103 +97,18 @@ public class ResultHelperTest {
 	 */
 	@Test
 	public final void testGetTimeOnly() {
-		fail("Not yet implemented"); // TODO
+		assertEquals("12:30 PM", ResultHelper.getTimeOnly("12/30/99 12:30 PM"));
 	}
-
+	
 	/**
-	 * Test method for {@link java.lang.Object#Object()}.
+	 * Test method for {@link com.richa.model.ResultHelper#getTimeOnly(java.lang.String)}.
+	 * @throws ParseException 
 	 */
 	@Test
-	public final void testObject() {
-		fail("Not yet implemented"); // TODO
-	}
-
-	/**
-	 * Test method for {@link java.lang.Object#getClass()}.
-	 */
-	@Test
-	public final void testGetClass() {
-		fail("Not yet implemented"); // TODO
-	}
-
-	/**
-	 * Test method for {@link java.lang.Object#hashCode()}.
-	 */
-	@Test
-	public final void testHashCode() {
-		fail("Not yet implemented"); // TODO
-	}
-
-	/**
-	 * Test method for {@link java.lang.Object#equals(java.lang.Object)}.
-	 */
-	@Test
-	public final void testEquals() {
-		fail("Not yet implemented"); // TODO
-	}
-
-	/**
-	 * Test method for {@link java.lang.Object#clone()}.
-	 */
-	@Test
-	public final void testClone() {
-		fail("Not yet implemented"); // TODO
-	}
-
-	/**
-	 * Test method for {@link java.lang.Object#toString()}.
-	 */
-	@Test
-	public final void testToString() {
-		fail("Not yet implemented"); // TODO
-	}
-
-	/**
-	 * Test method for {@link java.lang.Object#notify()}.
-	 */
-	@Test
-	public final void testNotify() {
-		fail("Not yet implemented"); // TODO
-	}
-
-	/**
-	 * Test method for {@link java.lang.Object#notifyAll()}.
-	 */
-	@Test
-	public final void testNotifyAll() {
-		fail("Not yet implemented"); // TODO
-	}
-
-	/**
-	 * Test method for {@link java.lang.Object#wait(long)}.
-	 */
-	@Test
-	public final void testWaitLong() {
-		fail("Not yet implemented"); // TODO
-	}
-
-	/**
-	 * Test method for {@link java.lang.Object#wait(long, int)}.
-	 */
-	@Test
-	public final void testWaitLongInt() {
-		fail("Not yet implemented"); // TODO
-	}
-
-	/**
-	 * Test method for {@link java.lang.Object#wait()}.
-	 */
-	@Test
-	public final void testWait() {
-		fail("Not yet implemented"); // TODO
-	}
-
-	/**
-	 * Test method for {@link java.lang.Object#finalize()}.
-	 */
-	@Test
-	public final void testFinalize() {
-		fail("Not yet implemented"); // TODO
+	public final void testGetTime() throws ParseException {
+		DateFormat format = new SimpleDateFormat("mm/dd/yy HH:MM a");
+		Date d = format.parse("12/30/99 12:30 PM");
+		assertEquals(d, ResultHelper.getTime("12/30/99 12:30 PM"));
 	}
 
 }
