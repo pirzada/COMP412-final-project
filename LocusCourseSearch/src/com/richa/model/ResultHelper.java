@@ -22,6 +22,7 @@ public class ResultHelper {
 
 	/**
 	 * Reads the rapid miner results and store in a list
+	 * 
 	 * @param fileName
 	 * @param results
 	 */
@@ -69,6 +70,7 @@ public class ResultHelper {
 
 	/**
 	 * Filter the result according to given inputs
+	 * 
 	 * @param completeResult
 	 * @param searchCriteria
 	 * @return
@@ -93,6 +95,7 @@ public class ResultHelper {
 
 	/**
 	 * Group the clustered result
+	 * 
 	 * @param result
 	 * @return
 	 */
@@ -101,12 +104,14 @@ public class ResultHelper {
 		List<FinalResults> clusteredResults = new ArrayList<FinalResults>();
 
 		List<String> string = new ArrayList<String>();
-
+		List<String> sTimestring = new ArrayList<String>();
+		List<String> eTimestring = new ArrayList<String>();
 		for (Result r : result) {
 			string.add(r.getLabel());
 		}
 
 		Set<String> uniqueSet = new HashSet<String>(string);
+
 		FinalResults f;
 
 		for (String temp : uniqueSet) {
@@ -118,9 +123,12 @@ public class ResultHelper {
 			 * Date sTime = getTime("12/12/12 12:00 PM"), eTime = getTime(
 			 * "12/12/99 12:00 AM");
 			 */
-			String campus = null;
-			String sTime = null;
-			String eTime = null;
+			String setSTime = null;
+			String setETime = null;
+			int countWTC = 0;
+			int countLSC = 0;
+			sTimestring = new ArrayList<String>();
+			eTimestring = new ArrayList<String>();
 			for (Result r : result) {
 				if (r.getLabel().equals(temp)) {
 					/*
@@ -129,16 +137,42 @@ public class ResultHelper {
 					 * (eTime.compareTo(getTime(r.getEndTime())) < 0) { eTime =
 					 * getTime(r.getEndTime()); }
 					 */
-					sTime = getTimeOnly(r.getStartTime());
-					eTime = getTimeOnly(r.getEndTime());
-					campus = r.getCampus();
+					if (r.getCampus().equalsIgnoreCase("WTC")) {
+						countWTC++;
+					} else {
+						countLSC++;
+					}
+					sTimestring.add(getTimeOnly(r.getStartTime()));
+					eTimestring.add(getTimeOnly(r.getEndTime()));
 				}
 			}
-
-			f.setStartTime(sTime);
-			f.setEndTime(eTime);
+			Set<String> startTimeSet = new HashSet<String>(sTimestring);
+			Set<String> endTimeSet = new HashSet<String>(eTimestring);
+			int count = 0;
+			int max = 0;
+			for (String sTime : startTimeSet) {
+				count = Collections.frequency(sTimestring, sTime);
+				if (count > max) {
+					max = count;
+					setSTime = sTime;
+				}
+			}
+			max = 0;
+			count = 0;
+			for (String eTime : endTimeSet) {
+				count = Collections.frequency(eTimestring, eTime);
+				if (count > max) {
+					max = count;
+					setETime = eTime;
+				}
+			}
+			f.setStartTime(setSTime);
+			f.setEndTime(setETime);
 			f.setCluster(temp);
-			f.setCampus(campus);
+			if (countLSC < countWTC)
+				f.setCampus("WTC");
+			else
+				f.setCampus("LSC");
 			clusteredResults.add(f);
 		}
 
@@ -147,6 +181,7 @@ public class ResultHelper {
 
 	/**
 	 * search the required classes
+	 * 
 	 * @param value
 	 * @return
 	 */
@@ -165,7 +200,8 @@ public class ResultHelper {
 	}
 
 	/**
-	 *return the expanded result
+	 * return the expanded result
+	 * 
 	 * @param value
 	 * @return
 	 */
@@ -190,6 +226,7 @@ public class ResultHelper {
 
 	/**
 	 * Convert the string into date
+	 * 
 	 * @param dateTime
 	 * @return
 	 */
@@ -208,6 +245,7 @@ public class ResultHelper {
 
 	/**
 	 * trim the date to return time only
+	 * 
 	 * @param dateTime
 	 * @return
 	 */
